@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordKit — Word Unscrambler, Anagram Finder, Crossword Solver & Wordle Helper</title>
-<meta name="description" content="WordKit is your ultimate free toolkit for word games. Features a word unscrambler, anagram finder, rhyme dictionary, Wordle helper, crossword solver, and Scrabble tools.">
+<title>Spelling Bee Helper — Free Online Tool | WordKit</title>
+<meta name="description" content="Find words for the NYT spelling bee puzzle. Use WordKit for free online word tools.">
 <meta name="keywords" content="word unscrambler, anagram finder, rhyme finder, Wordle helper, crossword puzzle solver, Scrabble word finder, spelling bee helper, daily word game">
 <meta name="author" content="WordKit">
 <meta property="og:title" content="WordKit — Word Unscrambler, Anagram Finder & Word Tools">
@@ -764,5 +764,12 @@
 </footer>
 
 <script src="wk-app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        if(typeof showTool === 'function') showTool('spellingbee');
+    }, 50);
+});
+</script>
 </body>
 </html>
