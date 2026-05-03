@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Word Generator — Free Online Tool | WordKit</title>
+<meta name="description" content="Generate random words for games, writing, and practice. Use WordKit for free online word tools.">
+<meta name="keywords" content="word unscrambler, anagram finder, rhyme finder, Wordle helper, crossword puzzle solver, Scrabble word finder, spelling bee helper, daily word game">
+<meta name="author" content="WordKit">
+<meta property="og:title" content="WordKit — Word Unscrambler, Anagram Finder & Word Tools">
+<meta property="og:description" content="Your ultimate free toolkit for word games. Unscramble words, find anagrams, solve crosswords, and beat Wordle.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wk-style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="window.location.href='index.html'">WordKit <span class="logo-badge">beta</span></div>
+  <div class="nav-links">
+    <button class="nav-btn" onclick="window.location.href='unscramble-tool.html'">Unscramble</button>
+    <button class="nav-btn" onclick="window.location.href='anagram-tool.html'">Anagram</button>
+    <button class="nav-btn" onclick="window.location.href='rhyme-tool.html'">Rhymes</button>
+    <button class="nav-btn" onclick="window.location.href='wordle-tool.html'">Wordle Helper</button>
+    <button class="nav-btn" onclick="window.location.href='crossword-tool.html'">Crossword</button>
+    <button class="nav-btn" onclick="window.location.href='wordsearch-tool.html'">Word Search</button>
+    <button class="nav-btn" onclick="window.location.href='hangman-tool.html'">Hangman</button>
+    <button class="nav-btn" onclick="window.location.href='wordleplay-tool.html'">Daily Wordle</button>
+    <button class="nav-btn" onclick="window.location.href='spellingbee-tool.html'">Spelling Bee</button>
+    <button class="nav-btn" onclick="window.location.href='scrabble-tool.html'">Scrabble</button>
+    <button class="nav-btn" onclick="window.location.href='wordladder-tool.html'">Word Ladder</button>
+    <button class="nav-btn" onclick="window.location.href='random-tool.html'">Random Word</button>
+  </div>
+</nav>
+
+
+<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:.4rem 2rem">
+  <div style="max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+    <span class="streak-pill" id="wk-streak"></span>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div id="wk-recent" style="display:flex;align-items:center;gap:5px;flex-wrap:wrap"></div>
+      <button id="wk-theme-btn" onclick="toggleWKTheme()" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid var(--border2);border-radius:12px;background:transparent;color:var(--ink2);cursor:pointer;letter-spacing:.04em">◐ Light</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ HOME ═══════════ -->
+<div id="home-view">
+  
+<div style="max-width:1140px;margin:0 auto;padding:0 2rem">
+  <div class="daily-word-card" id="wk-daily-word-card">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem">Word of the Day</div>
+      <div id="wotd-word" style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:var(--ink);letter-spacing:-.01em;margin-bottom:.25rem">EPHEMERAL</div>
+      <div id="wotd-pos" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink3);margin-bottom:.5rem">adjective</div>
+      <div id="wotd-def" style="font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:.75rem">Lasting for only a short time; transitory.</div>
+      <div id="wotd-ex" style="font-size:12px;color:var(--ink3);font-style:italic;line-height:1.55">"The morning dew is ephemeral, gone before noon."</div>
+    </div>
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem">Daily Challenge</div>
+      <div id="wk-daily-q" style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:.75rem;line-height:1.5"></div>
+      <div id="wk-daily-opts" style="display:flex;flex-direction:column;gap:5px"></div>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+    <div class="hero-eyebrow">Free word tools — no signup, no ads, just words</div>
+    <h1>The word<br>toolkit for<br><em>every game</em></h1>
+    <p class="hero-sub">Unscramble letters, solve crosswords, find rhymes, beat Wordle — everything a word lover needs in one fast, free place.</p>
+    <div class="tool-pills">
+      <button class="tool-pill" onclick="window.location.href='unscramble-tool.html'">Word Unscrambler</button>
+      <button class="tool-pill" onclick="window.location.href='anagram-tool.html'">Anagram Finder</button>
+      <button class="tool-pill" onclick="window.location.href='rhyme-tool.html'">Rhyme Finder</button>
+      <button class="tool-pill" onclick="window.location.href='wordle-tool.html'">Wordle Helper</button>
+      <button class="tool-pill" onclick="window.location.href='crossword-tool.html'">Crossword Puzzle</button>
+      <button class="tool-pill" onclick="window.location.href='wordsearch-tool.html'">Word Search</button>
+    </div>
+  </div>
+
+  <div style="max-width:1140px;margin:0 auto;padding:0 2rem 4rem">
+    <!-- WK PERSONALISATION ROWS -->
+    <div class="wk-pers-row" id="wk-pers-wrap">
+      <div id="wk-pin-row" style="display:none">
+        <div class="wk-pers-label" style="margin-bottom:.4rem">★ Pinned</div>
+        <div class="wk-pin-strip" id="wk-pin-strip"></div>
+      </div>
+      <div id="wk-freq-row" style="display:none">
+        <div class="wk-pers-label" style="margin-bottom:.4rem">Used frequently</div>
+        <div class="wk-pin-strip" id="wk-freq-strip"></div>
+      </div>
+    </div>
+
+    <!-- WK TAB BAR -->
+    <div style="max-width:1140px;margin:0 auto;padding:0 2rem .25rem">
+      <div class="wk-tab-bar" id="wk-home-tabs">
+        <button class="wk-tab on" data-wt="wk-ht-tools">Tools <span class="wct">7</span></button>
+        <button class="wk-tab" data-wt="wk-ht-games">Games <span class="wct">5</span></button>
+        <button class="wk-tab" data-wt="wk-ht-daily">Daily</button>
+        <button class="wk-tab" data-wt="wk-ht-lists">Word Lists</button>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:.5rem" id="wk-ht-tools">
+      <div onclick="window.location.href='unscramble-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative"
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('unscramble')" id="wkhp-unscramble">★</button> onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Unscrambler</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Word Unscrambler</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Enter any jumbled letters and instantly find all valid English words. Perfect for Scrabble, Wordle, and word puzzles.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent)">Try: AELRT →</div>
+      </div>
+      <div onclick="window.location.href='anagram-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative"
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('anagram')" id="wkhp-anagram">★</button> onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Anagram</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Anagram Finder</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Find all anagrams of any word. Uses all the letters to form new words — LISTEN → SILENT, ENLIST, TINSEL.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent2)">Try: LISTEN →</div>
+      </div>
+      <div onclick="window.location.href='rhyme-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative"
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('rhyme')" id="wkhp-rhyme">★</button> onmouseover="this.style.borderColor='var(--accent3)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Rhymes</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Rhyme Finder</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Perfect, near, and slant rhymes for any word. Built for songwriters, poets, and rap artists.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent3)">Try: LOVE →</div>
+      </div>
+      <div onclick="window.location.href='wordle-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative"
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('wordle')" id="wkhp-wordle">★</button> onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Wordle</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Wordle Helper</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Stuck on today's Wordle? Enter your green, yellow, and grey letters to narrow down the answer instantly.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent)">Solve today →</div>
+      </div>
+      <div onclick="window.location.href='crossword-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;grid-column:span 1" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Play</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Crossword Puzzle</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Play a fresh mini crossword puzzle. New puzzle every time. Type answers directly into the grid.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red)">Play now →</div>
+      </div>
+      <div onclick="window.location.href='wordsearch-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative"
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('wordsearch')" id="wkhp-wordsearch">★</button> onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Play</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Word Search</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Find hidden words in a letter grid. Click and drag to select. Multiple themes available.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent2)">Start searching →</div>
+      </div>
+    </div><!-- end wk-ht-tools -->
+
+    <!-- GAMES TAB -->
+    <div style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:.5rem" id="wk-ht-games">
+      <div onclick="window.location.href='wordleplay-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('wordleplay')" id="wkhp-wordleplay">★</button>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Game · Daily</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Daily Word Game</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Guess the 5-letter word in 6 tries. Fresh puzzle every day — same word for everyone.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent2)">Play today →</div>
+      </div>
+      <div onclick="window.location.href='crossword-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative"
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('crossword')" id="wkhp-crossword">★</button> onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'">
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('crossword')" id="wkhp-crossword">★</button>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Game · Puzzle</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Crossword Puzzle</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Mini crossword with 3 rotating puzzles. Keyboard navigation, check & reveal.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red)">Play now →</div>
+      </div>
+      <div onclick="window.location.href='wordsearch-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('wordsearch')" id="wkhp-wordsearch">★</button>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Game · 5 themes</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Word Search</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Find hidden words in a letter grid. Animals, countries, sports, fruits, colours.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent2)">Start searching →</div>
+      </div>
+      <div onclick="window.location.href='hangman-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('hangman')" id="wkhp-hangman">★</button>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Game · 5 categories</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Hangman</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Classic hangman with animals, countries, tech, food and sports word sets.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent)">Start game →</div>
+      </div>
+      <div onclick="window.location.href='wordladder-tool.html'" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer;transition:border-color .2s;position:relative" onmouseover="this.style.borderColor='var(--accent3)'" onmouseout="this.style.borderColor='var(--border)'">
+        <button class="wk-home-card-pin" aria-label="Pin tool" onclick="event.stopPropagation();wkTogglePin('wordladder')" id="wkhp-wordladder">★</button>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Game · Puzzle</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Word Ladder</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.6">Transform one word into another, one letter at a time. CAT → DOG in 3 steps.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent3)">Start puzzle →</div>
+      </div>
+    </div><!-- end wk-ht-games -->
+
+    <!-- DAILY TAB -->
+    <div style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:.5rem" id="wk-ht-daily">
+      <div style="background:var(--surface);border:1px solid var(--accent);border-radius:14px;padding:1.5rem">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Today</div>
+        <div id="ht-wotd-word" style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--ink);margin-bottom:.25rem">EPHEMERAL</div>
+        <div id="ht-wotd-pos" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);margin-bottom:.5rem">adjective</div>
+        <div id="ht-wotd-def" style="font-size:13px;color:var(--ink2);line-height:1.6">Lasting for only a short time; transitory.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;cursor:pointer" onclick="window.location.href='wordleplay-tool.html'">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Daily Word Game</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:.5rem">Today's Puzzle</div>
+        <div style="font-size:13px;color:var(--ink2)">5-letter word, 6 tries. Resets at midnight.</div>
+        <div style="margin-top:1rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent2)">Play now →</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem" id="ht-daily-challenge">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Daily Word Challenge</div>
+        <div id="ht-wk-daily-q" style="font-size:13px;color:var(--ink);line-height:1.55;margin-bottom:.75rem"></div>
+        <div id="ht-wk-daily-opts" style="display:flex;flex-direction:column;gap:5px"></div>
+      </div>
+    </div><!-- end wk-ht-daily -->
+
+    <!-- WORD LISTS TAB -->
+    <div style="display:none;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:.5rem" id="wk-ht-lists">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;cursor:pointer" onclick="showListPage('2letter')">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Reference</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:.35rem">2-Letter Words</div>
+        <div style="font-size:12px;color:var(--ink2)">All 107 valid Scrabble 2-letter words. Essential list.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;cursor:pointer" onclick="showListPage('qwords')">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Scrabble</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:.35rem">Q Without U</div>
+        <div style="font-size:12px;color:var(--ink2)">Rare words with Q not followed by U. Qoph, Qanat, Qigong…</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;cursor:pointer" onclick="showListPage('5letter')">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Wordle Prep</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:.35rem">5-Letter Word Bank</div>
+        <div style="font-size:12px;color:var(--ink2)">Common 5-letter words filtered for Wordle practice.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;cursor:pointer" onclick="showListPage('highscore')">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Scrabble</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:.35rem">High-Score Words</div>
+        <div style="font-size:12px;color:var(--ink2)">Words using Z, X, Q, J, K for maximum Scrabble points.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;cursor:pointer" onclick="showListPage('vowelheavy')">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Reference</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:.35rem">Vowel-Heavy Words</div>
+        <div style="font-size:12px;color:var(--ink2)">Words with 4+ vowels — great for unloading vowel tiles.</div>
+      </div>
+    </div><!-- end wk-ht-lists -->
+
+  </div>
+</div>
+
+<!-- ═══════════ TOOLS AREA ═══════════ -->
+<div class="tool-area" id="tools-area" style="display:none">
+  <button onclick="window.location.href='index.html'" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink3);background:none;border:none;cursor:pointer;margin-bottom:1.5rem;padding:0;display:flex;align-items:center;gap:6px;letter-spacing:.04em">← Back to all tools</button>
+
+  <!-- UNSCRAMBLE -->
+  <div class="tool-pane" id="pane-unscramble">
+    <div class="tl">
+      <div class="tl-main">
+        <div class="tool-title">Word Unscrambler</div>
+        <div class="tool-desc">Enter scrambled letters to find all valid English words. Use ? as a blank/wildcard tile.</div>
+        <div class="input-row">
+          <input class="wk-input" id="unscramble-input" placeholder="Enter letters e.g. AELRT" maxlength="15">
+          <button class="wk-btn" onclick="doUnscramble()">Unscramble</button>
+        </div>
+        <div class="filter-row" id="unscramble-filters"></div>
+        <div id="unscramble-results"><div class="empty-state"><span class="empty-icon">?</span>Enter letters above and hit Unscramble</div></div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card">
+          <div class="side-title">Quick examples</div>
+          <div class="info-row">
+            <div style="display:flex;flex-wrap:wrap;gap:5px">
+              <button class="wk-btn-outline" onclick="quickUnscramble('AELRT')">AELRT</button>
+              <button class="wk-btn-outline" onclick="quickUnscramble('SCREAM')">SCREAM</button>
+              <button class="wk-btn-outline" onclick="quickUnscramble('PLANET')">PLANET</button>
+              <button class="wk-btn-outline" onclick="quickUnscramble('STONE')">STONE</button>
+              <button class="wk-btn-outline" onclick="quickUnscramble('SPRITE')">SPRITE</button>
+            </div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">How it works</div>
+          <div class="info-row">
+            <div class="info-item"><div class="info-q">What is word unscrambling?</div><div class="info-a">Rearranging letters to form valid dictionary words. Used in Scrabble, Wordle, Text Twist, and word jumbles.</div></div>
+            <div class="info-item"><div class="info-q">Wildcard / blank tile</div><div class="info-a">Use ? to represent a blank tile in Scrabble. It matches any letter.</div></div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">Scrabble values</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink2);line-height:1.9">
+            A,E,I,O,U,L,N,S,T,R = <span style="color:var(--accent)">1pt</span><br>
+            D,G = <span style="color:var(--accent)">2pt</span> &nbsp; B,C,M,P = <span style="color:var(--accent)">3pt</span><br>
+            F,H,V,W,Y = <span style="color:var(--accent)">4pt</span> &nbsp; K = <span style="color:var(--accent)">5pt</span><br>
+            J,X = <span style="color:var(--accent)">8pt</span> &nbsp; Q,Z = <span style="color:var(--accent)">10pt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANAGRAM -->
+  <div class="tool-pane" id="pane-anagram">
+    <div class="tl">
+      <div class="tl-main">
+        <div class="tool-title">Anagram Finder</div>
+        <div class="tool-desc">Find every anagram of a word — words that use all the same letters rearranged.</div>
+        <div class="input-row">
+          <input class="wk-input" id="anagram-input" placeholder="Enter a word e.g. LISTEN" maxlength="12">
+          <button class="wk-btn" onclick="doAnagram()">Find Anagrams</button>
+        </div>
+        <div id="anagram-results"><div class="empty-state"><span class="empty-icon">↔</span>Enter a word to find its anagrams</div></div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card">
+          <div class="side-title">Famous anagrams</div>
+          <div class="info-row">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <button class="wk-btn-outline" onclick="quickAnagram('LISTEN')">LISTEN</button>
+              <button class="wk-btn-outline" onclick="quickAnagram('EARTH')">EARTH</button>
+              <button class="wk-btn-outline" onclick="quickAnagram('STONE')">STONE</button>
+              <button class="wk-btn-outline" onclick="quickAnagram('ANGEL')">ANGEL</button>
+            </div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">About anagrams</div>
+          <div class="info-row">
+            <div class="info-item"><div class="info-q">What's an anagram?</div><div class="info-a">A word formed by rearranging all letters of another word. LISTEN = SILENT = ENLIST = TINSEL.</div></div>
+            <div class="info-item"><div class="info-q">Anagram vs unscramble</div><div class="info-a">Anagrams use ALL letters. Unscrambling finds words using any subset of the letters.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RHYME -->
+  <div class="tool-pane" id="pane-rhyme">
+    <div class="tl">
+      <div class="tl-main">
+        <div class="tool-title">Rhyme Finder</div>
+        <div class="tool-desc">Find perfect rhymes, near rhymes, and slant rhymes for any word. Built for poets, songwriters, and lyricists.</div>
+        <div class="input-row">
+          <input class="wk-input" id="rhyme-input" placeholder="Enter a word e.g. LOVE" maxlength="20" style="text-transform:lowercase">
+          <button class="wk-btn" onclick="doRhyme()">Find Rhymes</button>
+        </div>
+        <div id="rhyme-results"><div class="empty-state"><span class="empty-icon">♪</span>Enter a word to find rhymes</div></div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card">
+          <div class="side-title">Try these</div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px">
+            <button class="wk-btn-outline" onclick="quickRhyme('love')">love</button>
+            <button class="wk-btn-outline" onclick="quickRhyme('time')">time</button>
+            <button class="wk-btn-outline" onclick="quickRhyme('night')">night</button>
+            <button class="wk-btn-outline" onclick="quickRhyme('heart')">heart</button>
+            <button class="wk-btn-outline" onclick="quickRhyme('fire')">fire</button>
+            <button class="wk-btn-outline" onclick="quickRhyme('dream')">dream</button>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">Rhyme types</div>
+          <div class="info-row">
+            <div class="info-item"><div class="info-q" style="color:var(--accent)">Perfect rhyme</div><div class="info-a">Identical vowel sound + ending. cat / hat / bat.</div></div>
+            <div class="info-item"><div class="info-q" style="color:var(--accent2)">Near rhyme</div><div class="info-a">Similar but not identical. time / mine / kind.</div></div>
+            <div class="info-item"><div class="info-q" style="color:var(--accent3)">Slant rhyme</div><div class="info-a">Partial sound match. love / move / groove.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORDLE HELPER -->
+  <div class="tool-pane" id="pane-wordle">
+    <div class="tl">
+      <div class="tl-main">
+        <div class="tool-title">Wordle Helper</div>
+        <div class="tool-desc">Enter your guesses with colour-coded tiles to narrow down the answer. Green = correct position. Yellow = wrong position. Grey = not in word.</div>
+
+        <div style="margin-bottom:1.25rem">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem">Your guesses (click tiles to toggle colour)</div>
+          <div id="wordle-guesses" style="display:flex;flex-direction:column;gap:6px;margin-bottom:1rem">
+          </div>
+          <div class="input-row" style="margin-bottom:.5rem">
+            <input class="wordle-letter-input" id="wordle-guess-input" placeholder="Type a guess word" maxlength="5" style="flex:1">
+            <button class="wk-btn" onclick="addWordleGuess()">Add Guess</button>
+          </div>
+          <button class="wk-btn-outline" onclick="clearWordleGuesses()" style="font-size:12px">Clear all guesses</button>
+        </div>
+
+        <div style="margin-bottom:1rem">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem">Letters NOT in the word</div>
+          <input class="wk-input" id="wordle-excluded" placeholder="e.g. ABCDE" maxlength="26" style="font-size:14px;letter-spacing:.1em">
+        </div>
+
+        <button class="wk-btn" onclick="solveWordle()" style="width:100%;margin-bottom:1rem">Find possible words</button>
+        <div id="wordle-results"><div class="empty-state"><span class="empty-icon">W</span>Add your Wordle guesses above, then click Find</div></div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card">
+          <div class="side-title">How to use</div>
+          <div class="info-row">
+            <div class="info-item"><div class="info-q">1. Type a guess word</div><div class="info-a">Enter the 5-letter word you guessed in Wordle and click Add Guess.</div></div>
+            <div class="info-item"><div class="info-q">2. Set tile colours</div><div class="info-a">Click each letter tile to cycle through: grey → yellow → green.</div></div>
+            <div class="info-item"><div class="info-q">3. Find answers</div><div class="info-a">Click "Find possible words" to see all valid answers matching your clues.</div></div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">Colour legend</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:4px;background:#2D5A3D;border:1px solid var(--accent2);font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--accent2);display:flex;align-items:center;justify-content:center">A</div><span style="font-size:12px;color:var(--ink2)">Correct letter, correct position</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:4px;background:#5A4A1A;border:1px solid var(--accent);font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--accent);display:flex;align-items:center;justify-content:center">B</div><span style="font-size:12px;color:var(--ink2)">Letter in word, wrong position</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:4px;background:var(--surface3);border:1px solid var(--border2);font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink3);display:flex;align-items:center;justify-content:center">C</div><span style="font-size:12px;color:var(--ink2)">Letter not in the word</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CROSSWORD -->
+  <div class="tool-pane" id="pane-crossword">
+    <div class="tl-main" style="margin-bottom:1rem">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem">
+        <div>
+          <div class="tool-title">Crossword Puzzle</div>
+          <div class="tool-desc" style="margin-bottom:0">Click a clue or a cell to start. Type to fill in letters. Press Tab to move to next word.</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-shrink:0">
+          <button class="wk-btn-outline" onclick="newCrossword()">New Puzzle</button>
+          <button class="wk-btn-outline" onclick="revealCrossword()">Reveal All</button>
+          <button class="wk-btn" onclick="checkCrossword()">Check</button>
+        </div>
+      </div>
+      <div id="cw-complete-msg" style="display:none;background:#1A3020;border:1px solid var(--accent2);border-radius:var(--radius-sm);padding:.75rem 1rem;margin-bottom:1rem;font-size:13px;color:var(--accent2);font-weight:600">🎉 Puzzle complete! Well done! <button onclick="newCrossword()" style="margin-left:1rem;background:var(--accent2);color:#000;border:none;padding:4px 12px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600">Next Puzzle</button></div>
+      <div class="cw-layout">
+        <div>
+          <div class="cw-grid-wrap"><div class="cw-grid" id="cw-grid"></div></div>
+          <div style="margin-top:.75rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink3)" id="cw-active-clue">Select a cell to begin</div>
+        </div>
+        <div>
+          <div class="cw-tabs">
+            <button class="cw-tab on" id="cwt-across" onclick="setCWTab('across')">Across</button>
+            <button class="cw-tab" id="cwt-down" onclick="setCWTab('down')">Down</button>
+          </div>
+          <div class="clue-list" id="cw-clues"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORD SEARCH -->
+  <div class="tool-pane" id="pane-wordsearch">
+    <div class="tl-main">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem">
+        <div>
+          <div class="tool-title">Word Search</div>
+          <div class="tool-desc" style="margin-bottom:0">Find all hidden words in the grid. Click the first letter, then the last to select a word.</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <select id="ws-theme" style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:7px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink2);outline:none">
+            <option value="animals">Animals</option>
+            <option value="fruits">Fruits</option>
+            <option value="countries">Countries</option>
+            <option value="sports">Sports</option>
+            <option value="colors">Colors</option>
+          </select>
+          <button class="wk-btn" onclick="newWordSearch()">New Puzzle</button>
+        </div>
+      </div>
+      <div class="ws-layout">
+        <div>
+          <div class="ws-wrap"><div class="ws-grid" id="ws-grid"></div></div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink3);margin-top:.5rem" id="ws-status">Click start letter, then end letter of a word</div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem">Find these words</div>
+          <div class="ws-words" id="ws-words"></div>
+          <div style="margin-top:1.25rem;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink3)" id="ws-score">0 of 0 found</div>
+          <div id="ws-complete" style="display:none;margin-top:.75rem;background:#1A3020;border:1px solid var(--accent2);border-radius:var(--radius-sm);padding:.75rem;font-size:12px;color:var(--accent2);font-weight:600">All words found! 🎉 <button onclick="newWordSearch()" style="margin-left:.5rem;background:var(--accent2);color:#000;border:none;padding:3px 10px;border-radius:4px;cursor:pointer;font-size:11px">New Puzzle</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HANGMAN -->
+  <div class="tool-pane" id="pane-hangman">
+    <div class="tl">
+      <div class="tl-main">
+        <div class="tool-title">Hangman</div>
+        <div class="tool-desc">Guess the hidden word before the man is hanged. 6 wrong guesses allowed.</div>
+        <div style="display:flex;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap">
+          <div class="field-group" style="flex:1;min-width:160px;margin-bottom:0">
+            <div class="field-label" style="margin-bottom:5px">Category</div>
+            <select id="hm-cat" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:8px 12px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink2);outline:none">
+              <option value="animals">Animals</option>
+              <option value="countries">Countries</option>
+              <option value="tech">Technology</option>
+              <option value="food">Food</option>
+              <option value="sports">Sports</option>
+            </select>
+          </div>
+          <div style="display:flex;align-items:flex-end"><button class="wk-btn" onclick="newHangman()">New Game</button></div>
+        </div>
+        <div id="hangman-game" style="display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start">
+          <div>
+            <svg class="hangman-svg" width="140" height="160" id="hm-svg" style="display:block"></svg>
+          </div>
+          <div style="flex:1;min-width:200px">
+            <div id="hm-letters" style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:1.25rem;min-height:46px"></div>
+            <div style="margin-bottom:.5rem"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em">Wrong guesses: </span><span class="hangman-wrong" id="hm-wrong"></span></div>
+            <div id="hm-msg" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);margin-bottom:.75rem;min-height:20px"></div>
+            <div class="kbd-row" id="hm-kbd-row1"></div>
+            <div class="kbd-row" id="hm-kbd-row2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card"><div class="side-title">Rules</div><div class="info-row"><div class="info-item"><div class="info-q">How to play</div><div class="info-a">Guess letters one at a time. Each wrong guess adds a body part. 6 wrong = game over!</div></div><div class="info-item"><div class="info-q">Tip</div><div class="info-a">Start with common vowels: E, A, I, O, U — then try S, T, R, N.</div></div></div></div>
+        <div class="side-card"><div class="side-title">Stats</div><div class="stat-row"><div class="stat-item"><span class="stat-n" id="hm-wins">0</span><span class="stat-l">Wins</span></div><div class="stat-item"><span class="stat-n" id="hm-losses">0</span><span class="stat-l">Losses</span></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY WORDLE CLONE -->
+  <div class="tool-pane" id="pane-wordleplay">
+    <div class="tl">
+      <div class="tl-main">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem">
+          <div>
+            <div class="tool-title">Daily Word</div>
+            <div class="tool-desc" style="margin-bottom:0">Guess the 5-letter word in 6 tries. Same word for everyone today.</div>
+          </div>
+          <div style="display:flex;gap:8px"><button class="wk-btn-outline" onclick="wlShare()">Share result</button><button class="wk-btn-outline" onclick="initWordlePlay()">Reset</button></div>
+        </div>
+        <div id="wl-grid" style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.25rem"></div>
+        <div id="wl-msg" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);margin-bottom:.75rem;min-height:20px;text-align:center"></div>
+        <div id="wl-input-row" style="display:flex;gap:8px;margin-bottom:1rem">
+          <input id="wl-input" class="wk-input" placeholder="TYPE GUESS" maxlength="5" style="text-transform:uppercase;letter-spacing:.12em;font-size:16px" onkeydown="if(event.key==='Enter')submitWLGuess()">
+          <button class="wk-btn" onclick="submitWLGuess()">Guess</button>
+        </div>
+        <div id="wl-keyboard" style="display:flex;flex-direction:column;gap:5px"></div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card"><div class="side-title">How to play</div><div class="info-row"><div class="info-item"><div class="info-q" style="color:var(--accent2)">Green tile</div><div class="info-a">Right letter, right position.</div></div><div class="info-item"><div class="info-q" style="color:var(--accent)">Yellow tile</div><div class="info-a">Right letter, wrong position.</div></div><div class="info-item"><div class="info-q" style="color:var(--ink3)">Grey tile</div><div class="info-a">Letter not in the word.</div></div></div></div>
+        <div class="side-card"><div class="side-title">Today's stats</div><div class="stat-row"><div class="stat-item"><span class="stat-n" id="wl-streak-n">0</span><span class="stat-l">Streak</span></div><div class="stat-item"><span class="stat-n" id="wl-played-n">0</span><span class="stat-l">Played</span></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPELLING BEE HELPER -->
+  <div class="tool-pane" id="pane-spellingbee">
+    <div class="tl">
+      <div class="tl-main">
+        <div class="tool-title">Spelling Bee Helper</div>
+        <div class="tool-desc">Find valid words for NYT Spelling Bee. Enter all 7 letters and the required center letter.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+          <div class="field-group" style="margin-bottom:0">
+            <div class="field-label" style="margin-bottom:6px">All 7 letters</div>
+            <input class="wk-input" id="bee-all" placeholder="ABCDEFG" maxlength="7" style="font-size:18px;letter-spacing:.14em">
+          </div>
+          <div class="field-group" style="margin-bottom:0">
+            <div class="field-label" style="margin-bottom:6px">Required center letter</div>
+            <input class="wk-input" id="bee-center" placeholder="A" maxlength="1" style="font-size:24px;letter-spacing:.2em;text-align:center">
+          </div>
+        </div>
+        <button class="wk-btn" onclick="doSpellingBee()" style="width:100%;margin-bottom:1rem">Find Words</button>
+        <div id="bee-results"><div class="empty-state"><span class="empty-icon">🐝</span>Enter 7 letters and the center letter above</div></div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card">
+          <div class="side-title">Scoring</div>
+          <div class="info-row">
+            <div class="info-item"><div class="info-q" style="color:var(--accent)">Pangram</div><div class="info-a">Uses all 7 letters — bonus 7 points on top of word length!</div></div>
+            <div class="info-item"><div class="info-q">4 letters</div><div class="info-a">1 point</div></div>
+            <div class="info-item"><div class="info-q">5+ letters</div><div class="info-a">1 point per letter</div></div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">Rules</div>
+          <div class="info-row">
+            <div class="info-item"><div class="info-a">Every word must: (1) use only the 7 given letters, (2) include the center letter, (3) be at least 4 letters long.</div></div>
+            <div class="info-item"><div class="info-a">Letters can be reused as many times as needed.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRABBLE WORD FINDER -->
+  <div class="tool-pane" id="pane-scrabble">
+    <div class="tl">
+      <div class="tl-main">
+        <div class="tool-title">Scrabble Word Finder</div>
+        <div class="tool-desc">Enter your rack letters (use ? for blank tile) to find the highest-scoring Scrabble plays.</div>
+        <div class="input-row">
+          <input class="wk-input" id="scr-rack" placeholder="Your rack letters e.g. AELRST?" maxlength="10">
+          <button class="wk-btn" onclick="doScrabble()">Find Plays</button>
+        </div>
+        <div style="display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink2);cursor:pointer"><input type="checkbox" id="scr-2letter" onchange="doScrabble()"> Show 2-letter words only</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink2);cursor:pointer"><input type="checkbox" id="scr-highscore"> Show highest scoring first</label>
+        </div>
+        <div id="scr-results"><div class="empty-state"><span class="empty-icon">S</span>Enter rack letters to find Scrabble plays</div></div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card">
+          <div class="side-title">Quick reference</div>
+          <div class="info-row">
+            <div class="info-item"><div class="info-q" style="color:var(--accent)">High value letters</div><div class="info-a">Q=10, Z=10, J=8, X=8, K=5. Build words around these.</div></div>
+            <div class="info-item"><div class="info-q">Bingo bonus</div><div class="info-a">Using all 7 rack letters = +50 points!</div></div>
+            <div class="info-item"><div class="info-q">? = blank tile</div><div class="info-a">Worth 0 points but matches any letter.</div></div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">2-letter word cheat sheet</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink2);line-height:1.9">AA AB AD AE AG AH AI AL AM AN AR AS AT AW AX AY BA BE BI BO BY DA DE DO ED EF EH EL EM EN ER ES ET EW EX FA FE GI GO HA HE HI HM HO ID IF IN IS IT JO KA LA LI LO MA ME MI MM MO MU MY NA NE NO NU OD OE OF OH OI OM ON OP OR OS OW OX OY PA PE PI PO QI RE SH SI SO TA TI TO UH UM UN UP US UT WE WO XI XU YA YE YO ZA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORD LADDER -->
+  <div class="tool-pane" id="pane-wordladder">
+    <div class="tl">
+      <div class="tl-main">
+        <div class="tool-title">Word Ladder</div>
+        <div class="tool-desc">Change one letter at a time to transform the start word into the target word. Each step must be a valid word.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+          <div class="field-group" style="margin-bottom:0">
+            <div class="field-label" style="margin-bottom:6px">Start word</div>
+            <input class="wk-input" id="wl-start" placeholder="CAT" maxlength="6" style="font-size:18px;letter-spacing:.1em">
+          </div>
+          <div class="field-group" style="margin-bottom:0">
+            <div class="field-label" style="margin-bottom:6px">Target word</div>
+            <input class="wk-input" id="wl-target" placeholder="DOG" maxlength="6" style="font-size:18px;letter-spacing:.1em">
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap">
+          <button class="wk-btn" onclick="solveWordLadder()">Find Path</button>
+          <button class="wk-btn-outline" onclick="randomWordLadder()">Random Puzzle</button>
+        </div>
+        <div id="wl-ladder-results"><div class="empty-state"><span class="empty-icon">↕</span>Enter a start and target word to find the shortest path</div></div>
+        <div id="wl-play-area" style="display:none;margin-top:1rem">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem">Play it yourself — change one letter per step</div>
+          <div id="wl-play-chain" style="display:flex;flex-direction:column;gap:8px"></div>
+          <div class="input-row" style="margin-top:.75rem">
+            <input class="wk-input" id="wl-play-input" placeholder="Next word" maxlength="6" style="font-size:16px;letter-spacing:.08em">
+            <button class="wk-btn" onclick="submitLadderStep()">Step</button>
+          </div>
+          <div id="wl-play-msg" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);margin-top:.5rem;min-height:18px"></div>
+        </div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card">
+          <div class="side-title">Example</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink2);line-height:2.2">
+            <span style="color:var(--ink)">CAT</span> → <span style="color:var(--accent)">COT</span> → <span style="color:var(--accent)">COG</span> → <span style="color:var(--ink)">DOG</span>
+          </div>
+          <div style="font-size:12px;color:var(--ink3);margin-top:.5rem">3 steps: CAT to DOG</div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">Classic puzzles</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <button class="wk-btn-outline" onclick="setLadder('CAT','DOG')">CAT → DOG</button>
+            <button class="wk-btn-outline" onclick="setLadder('COLD','WARM')">COLD → WARM</button>
+            <button class="wk-btn-outline" onclick="setLadder('LOVE','HATE')">LOVE → HATE</button>
+            <button class="wk-btn-outline" onclick="setLadder('LEAD','GOLD')">LEAD → GOLD</button>
+            <button class="wk-btn-outline" onclick="setLadder('HEAD','TAIL')">HEAD → TAIL</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RANDOM WORD GENERATOR -->
+  <div class="tool-pane" id="pane-random">
+    <div class="tl">
+      <div class="tl-main">
+        <div class="tool-title">Random Word Generator</div>
+        <div class="tool-desc">Generate random words for writing prompts, games, brainstorming, and creative exercises.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.25rem">
+          <div class="field-group" style="margin-bottom:0">
+            <div class="field-label" style="margin-bottom:6px">Count</div>
+            <input type="number" id="rw-count" value="10" min="1" max="50" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px 12px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink);outline:none">
+          </div>
+          <div class="field-group" style="margin-bottom:0">
+            <div class="field-label" style="margin-bottom:6px">Min length</div>
+            <input type="number" id="rw-min" value="4" min="2" max="12" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px 12px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink);outline:none">
+          </div>
+          <div class="field-group" style="margin-bottom:0">
+            <div class="field-label" style="margin-bottom:6px">Max length</div>
+            <input type="number" id="rw-max" value="8" min="2" max="15" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px 12px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink);outline:none">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem">
+          <div class="field-group" style="margin-bottom:0">
+            <div class="field-label" style="margin-bottom:6px">Starts with (optional)</div>
+            <input class="wk-input" id="rw-starts" placeholder="e.g. S" maxlength="4" style="font-size:14px;letter-spacing:.06em">
+          </div>
+          <div class="field-group" style="margin-bottom:0">
+            <div class="field-label" style="margin-bottom:6px">Word type</div>
+            <select id="rw-type" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px 12px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink2);outline:none">
+              <option value="any">Any</option>
+              <option value="short">Short (2–4 letters)</option>
+              <option value="medium">Medium (5–7 letters)</option>
+              <option value="long">Long (8+ letters)</option>
+              <option value="highscore">High Scrabble score</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.25rem">
+          <button class="wk-btn" onclick="generateRandomWords()">Generate Words</button>
+          <button class="wk-btn-outline" onclick="generateRandomWords()">Regenerate</button>
+          <button class="wk-btn-outline" onclick="copyRandomWords()">Copy all</button>
+        </div>
+        <div id="rw-results"><div class="empty-state"><span class="empty-icon">?</span>Configure options above and click Generate</div></div>
+      </div>
+      <div class="tl-side">
+        <div class="side-card">
+          <div class="side-title">Use cases</div>
+          <div class="info-row">
+            <div class="info-item"><div class="info-q">Writers</div><div class="info-a">Use random words as story prompts or character name inspiration.</div></div>
+            <div class="info-item"><div class="info-q">Game makers</div><div class="info-a">Generate word lists for trivia, hangman, or Scrabble practice.</div></div>
+            <div class="info-item"><div class="info-q">Brainstorming</div><div class="info-a">Random words bypass creative blocks by forcing unexpected connections.</div></div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">Quick presets</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <button class="wk-btn-outline" onclick="setRWPreset(5,5,5,'','any')">Five 5-letter words</button>
+            <button class="wk-btn-outline" onclick="setRWPreset(10,3,4,'','any')">10 short words</button>
+            <button class="wk-btn-outline" onclick="setRWPreset(5,1,15,'','highscore')">5 high-score Scrabble words</button>
+            <button class="wk-btn-outline" onclick="setRWPreset(8,4,8,'','any')">Writing prompt set</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">WordKit</div>
+      <div class="footer-desc">Free word tools for Scrabble players, Wordle fans, crossword solvers, poets, and word game enthusiasts.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <a onclick="window.location.href='unscramble-tool.html'">Word Unscrambler</a>
+      <a onclick="window.location.href='anagram-tool.html'">Anagram Finder</a>
+      <a onclick="window.location.href='rhyme-tool.html'">Rhyme Finder</a>
+      <a onclick="window.location.href='wordle-tool.html'">Wordle Helper</a>
+    </div>
+    <div class="footer-col">
+      <h4>Games</h4>
+      <a onclick="window.location.href='crossword-tool.html'">Crossword Puzzle</a>
+      <a onclick="window.location.href='wordsearch-tool.html'">Word Search</a>
+      <a onclick="window.location.href='hangman-tool.html'">Hangman</a>
+      <a onclick="window.location.href='wordleplay-tool.html'">Daily Word</a>
+    </div>
+    <div class="footer-col">
+      <h4>Word Lists</h4>
+      <a onclick="window.location.href='spellingbee-tool.html'">Spelling Bee Helper</a>
+      <a onclick="window.location.href='scrabble-tool.html'">Scrabble Finder</a>
+      <a onclick="window.location.href='wordladder-tool.html'">Word Ladder</a>
+      <a onclick="window.location.href='random-tool.html'">Random Word Generator</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 WORDKIT.IO — ALL RIGHTS RESERVED</span>
+    <span>FREE FOREVER · NO SIGNUP</span>
+  </div>
+</footer>
+
+<script src="wk-app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        if(typeof showTool === 'function') showTool('random');
+    }, 50);
+});
+</script>
+</body>
+</html>
