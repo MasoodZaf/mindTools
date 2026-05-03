@@ -1174,7 +1174,7 @@ function swapCur(){
 function renderUnitFields(){
   const cat=document.getElementById('unit-cat').value;
   const def=UNIT_DEFS[cat];
-  document.getElementById('unit-fields').innerHTML=`<div class="field-group"><div class="field-label">Value</div><div style="display:flex;gap:8px"><input type="number" id="unit-val" placeholder="Enter a number" oninput="convertUnits()" style="flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:14px;color:var(--ink);background:var(--bg);outline:none;font-family:var(--font-sans)"><select id="unit-from" onchange="convertUnits()" style="padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;color:var(--ink);background:var(--bg);outline:none;font-family:var(--font-sans)">${def.units.map(u=>`<option>${u}</option>`).join('')}</select></div></div>`;
+  document.getElementById('unit-fields').innerHTML=`<div class="field-group"><div class="field-label">Value</div><div style="display:grid;grid-template-columns:1fr 110px;gap:8px"><input type="number" id="unit-val" placeholder="Enter a number" oninput="convertUnits()" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:14px;color:var(--ink);background:var(--bg);outline:none;font-family:var(--font-sans)"><select id="unit-from" onchange="convertUnits()" style="width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;color:var(--ink);background:var(--bg);outline:none;font-family:var(--font-sans)">${def.units.map(u=>`<option>${u}</option>`).join('')}</select></div></div>`;
 }
 function convertUnits(){
   const cat=document.getElementById('unit-cat').value;
