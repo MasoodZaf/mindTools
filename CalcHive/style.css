@@ -1,5 +1,5 @@
-:root{--bg:#F7F5F0;--surface:#FFFFFF;--ink:#1A1714;--ink2:#5A554E;--ink3:#9B958C;--accent:#D4500A;--accent2:#2A6B4F;--accent3:#1E4FA3;--border:#E2DDD6;--border2:#CCC8C0;--yellow:#F5C842;--radius:12px;--radius-sm:8px;--font-sans:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--font-serif:'Fraunces',serif}
-[data-theme=dark]{--bg:#0F0E0C;--surface:#181714;--ink:#F0EDE6;--ink2:#A09A92;--ink3:#5A554E;--border:#2A2724;--border2:#3A3630;--accent:#E8602A;--accent2:#3A8A65;--accent3:#3A6BC4}
+:root{--bg:#FFFDF8;--surface:#FFFFFF;--ink:#2C2825;--ink2:#6A605A;--ink3:#A89F95;--accent:#E07A5F;--accent2:#81B29A;--accent3:#3D405B;--border:#F4EBE1;--border2:#E8DAC7;--yellow:#F2CC8F;--radius:20px;--radius-sm:14px;--font-sans:'Quicksand',sans-serif;--font-mono:'Space Mono',monospace;--font-serif:'Lora',serif}
+[data-theme=dark]{--bg:#2B2523;--surface:#362F2C;--ink:#F4ECE6;--ink2:#C2B5AA;--ink3:#8C7F75;--border:#4A413D;--border2:#5E534D;--accent:#F4A261;--accent2:#2A9D8F;--accent3:#E9C46A}
 *:focus-visible { outline: 2px solid var(--accent) !important; outline-offset: 2px; }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -59,7 +59,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 2r
 .cat-tab.on{background:var(--bg);color:var(--ink);font-weight:600}
 .cat-tab .ct{font-size:10px;opacity:.5;margin-left:3px}
 .calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:12px}
-.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.2rem;cursor:pointer;transition:color , background-color , border-color , transform , opacity .18s;position:relative;overflow:hidden}
+.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.2rem;cursor:pointer;transition:color , background-color , border-color , transform , box-shadow .2s ease-in-out, opacity .18s;position:relative;overflow:hidden;box-shadow:0 6px 15px rgba(44, 40, 37, 0.04)}
 .calc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity .2s}
 .calc-card:hover{border-color:var(--border2);transform:translateY(-2px)}
 .calc-card:hover::before{opacity:1}
