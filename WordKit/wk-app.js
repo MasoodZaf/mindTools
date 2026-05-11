@@ -734,7 +734,7 @@ function renderWKHistory(){
   const el=document.getElementById('wk-recent');
   if(!el||!h.length) return;
   el.innerHTML='<span style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:var(--ink3)">Recent:</span>'+
-    h.map(x=>`<button onclick="window.location.href='${x.id}-tool.html'" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--ink3);cursor:pointer">${x.label}</button>`).join('');
+    h.map(x=>`<button onclick="window.location.href='${x.id}-tool'" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--ink3);cursor:pointer">${x.label}</button>`).join('');
 }
 
 /* ════════════════════════════════
@@ -1238,13 +1238,13 @@ function wkRenderPers(){
   const freqStrip=document.getElementById('wk-freq-strip');
   if(pinRow&&pinStrip){
     pinRow.style.display=pins.length?'block':'none';
-    pinStrip.innerHTML=pins.map(id=>`<button class="wk-pin-btn" onclick="window.location.href='${id}-tool.html'">★ ${WK_TOOL_LABELS[id]||id}</button>`).join('');
+    pinStrip.innerHTML=pins.map(id=>`<button class="wk-pin-btn" onclick="window.location.href='${id}-tool'">★ ${WK_TOOL_LABELS[id]||id}</button>`).join('');
   }
   const f=wkGetFreq();
   const top=freq.filter(id=>f[id]>1).slice(0,4);
   if(freqRow&&freqStrip){
     freqRow.style.display=top.length>1?'block':'none';
-    freqStrip.innerHTML=top.map(id=>`<button class="wk-recent-btn" onclick="window.location.href='${id}-tool.html'">${WK_TOOL_LABELS[id]||id}<span class="wk-freq-badge">${f[id]}×</span></button>`).join('');
+    freqStrip.innerHTML=top.map(id=>`<button class="wk-recent-btn" onclick="window.location.href='${id}-tool'">${WK_TOOL_LABELS[id]||id}<span class="wk-freq-badge">${f[id]}×</span></button>`).join('');
   }
   wkUpdatePinStars();
 }
