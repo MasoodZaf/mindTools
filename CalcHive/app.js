@@ -112,7 +112,7 @@ function renderPers(){
   const fs=document.getElementById('pers-freq-section'),fstrip=document.getElementById('freq-strip');
   if(fs&&fstrip){const top=freq.filter(id=>f[id]>1).slice(0,4);fs.style.display=top.length>1?'':'none';fstrip.innerHTML=top.map(id=>{const c=CALCS.find(x=>x.id===id);return c?`<button class="freq-btn" onclick="openCalc('${id}')">${c.title}<span class="freq-count">${f[id]}×</span></button>`:''}).join('');}
   const rr=document.getElementById('recent-row');
-  if(rr){const recent=hist.filter(x=>!pins.includes(x.id)).slice(0,4);rr.innerHTML=recent.map(x=>`<button class="recent-chip" onclick="window.location.href='${x.id}-calculator.html'">${x.title}</button>`).join('');}
+  if(rr){const recent=hist.filter(x=>!pins.includes(x.id)).slice(0,4);rr.innerHTML=recent.map(x=>`<button class="recent-chip" onclick="window.location.href='${x.id}-calculator'">${x.title}</button>`).join('');}
 }
 
 /* ── GRID ── */
@@ -130,7 +130,7 @@ function renderGrid(cat){
   document.getElementById('calc-grid').innerHTML=sorted.map(c=>{
     const pinned=isPinned(c.id);
     const badges=(HOT.has(c.id)?'<span class="cc-badge badge-hot">Popular</span>':'')+(c.isNew?'<span class="cc-badge badge-new">New</span>':'');
-    return`<div class="calc-card cat-${c.cat}" onclick="window.location.href='${c.id}-calculator.html'">
+    return`<div class="calc-card cat-${c.cat}" onclick="window.location.href='${c.id}-calculator'">
       <button class="cc-pin${pinned?' on':''}" onclick="togglePin('${c.id}',event)">★</button>
       <div class="cc-top"><div class="cc-cat">${c.cat}${badges}</div><div class="cc-rpm ${RPM_STYLE[c.rpm]}">${RPM_LABEL[c.rpm]}</div></div>
       <div class="cc-title">${c.title}</div>
@@ -146,7 +146,7 @@ function handleSearch(){
   const q=document.getElementById('searchInput').value.toLowerCase().trim();
   const list=q?CALCS.filter(c=>c.title.toLowerCase().includes(q)||c.desc.toLowerCase().includes(q)||c.tags.some(t=>t.includes(q))):CALCS;
   document.getElementById('count-label').textContent=list.length+' calculators';
-  document.getElementById('calc-grid').innerHTML=list.map(c=>`<div class="calc-card cat-${c.cat}" onclick="window.location.href='${c.id}-calculator.html'"><div class="cc-top"><div class="cc-cat">${c.cat}</div><div class="cc-rpm ${RPM_STYLE[c.rpm]}">${RPM_LABEL[c.rpm]}</div></div><div class="cc-title">${c.title}</div><div class="cc-desc">${c.desc}</div></div>`).join('');
+  document.getElementById('calc-grid').innerHTML=list.map(c=>`<div class="calc-card cat-${c.cat}" onclick="window.location.href='${c.id}-calculator'"><div class="cc-top"><div class="cc-cat">${c.cat}</div><div class="cc-rpm ${RPM_STYLE[c.rpm]}">${RPM_LABEL[c.rpm]}</div></div><div class="cc-title">${c.title}</div><div class="cc-desc">${c.desc}</div></div>`).join('');
 }
 
 /* ── TABS ── */
@@ -168,7 +168,7 @@ function renderRelated(id){
   const tools=ids.map(rid=>CALCS.find(c=>c.id===rid)).filter(Boolean);
   if(!tools.length){panel.style.display='none';return;}
   panel.style.display='';
-  items.innerHTML=tools.map(c=>`<button onclick="window.location.href='${c.id}-calculator.html'" style="display:flex;align-items:center;gap:10px;padding:.6rem .85rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;text-align:left;width:100%;font-family:var(--font-sans);transition:border-color .15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0"></div><div><div style="font-size:12px;font-weight:600;color:var(--ink)">${c.title}</div><div style="font-size:11px;color:var(--ink3);margin-top:1px">${c.desc.slice(0,52)}...</div></div></button>`).join('');
+  items.innerHTML=tools.map(c=>`<button onclick="window.location.href='${c.id}-calculator'" style="display:flex;align-items:center;gap:10px;padding:.6rem .85rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;text-align:left;width:100%;font-family:var(--font-sans);transition:border-color .15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0"></div><div><div style="font-size:12px;font-weight:600;color:var(--ink)">${c.title}</div><div style="font-size:11px;color:var(--ink3);margin-top:1px">${c.desc.slice(0,52)}...</div></div></button>`).join('');
 }
 
 /* ── UTILS ── */
