@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found (404) | CalcHive</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Lora:ital,wght@0,700;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFDF8;
+    --surface: #FFFFFF;
+    --ink: #2C2825;
+    --ink2: #6A605A;
+    --ink3: #A89F95;
+    --accent: #E07A5F;
+    --border: #F4EBE1;
+    --radius: 20px;
+    --radius-sm: 14px;
+    --font-sans: 'Quicksand', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-serif: 'Lora', serif;
+  }
+  
+  html[data-theme="dark"] {
+    --bg: #2B2523;
+    --surface: #362F2C;
+    --ink: #F4ECE6;
+    --ink2: #C2B5AA;
+    --ink3: #8C7F75;
+    --border: #4A413D;
+    --accent: #F4A261;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .logo {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .logo-dot {
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(44, 40, 37, 0.04);
+  }
+
+  .err-code {
+    font-family: var(--font-serif);
+    font-size: 96px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.04em;
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--ink2);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--surface);
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 14px;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+
+  .btn:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    padding: 1.5rem 2rem;
+    font-size: 11px;
+    color: var(--ink3);
+    text-align: center;
+  }
+</style>
+<script>
+  if (localStorage.getItem('ch-theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><span class="logo-dot"></span>CalcHive</a>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <div class="err-code">404</div>
+    <h1>Calculation error</h1>
+    <p>The page you are trying to compute doesn't exist. It might have been moved or doesn't exist.</p>
+    <a href="/" class="btn">Back to Home</a>
+  </div>
+</div>
+
+<footer>
+  <div>© 2026 CalcHive. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

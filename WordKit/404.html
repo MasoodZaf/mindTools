@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found (404) | WordKit</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Merriweather:ital,wght@0,700;0,900;1,700&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #2C2825;
+    --surface: #38322E;
+    --surface2: #463F3A;
+    --ink: #F8F4F1;
+    --ink2: #C5BCB6;
+    --ink3: #8F867E;
+    --accent: #F2CC8F;
+    --border: #463F3A;
+    --radius: 18px;
+    --radius-sm: 10px;
+  }
+  
+  html[data-theme="light"] {
+    --bg: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE6;
+    --ink: #1A1714;
+    --ink2: #5A554E;
+    --ink3: #9B958C;
+    --accent: #C8950A;
+    --border: #D8D3CB;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    font-family: 'Merriweather', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-badge {
+    background: var(--accent);
+    color: #000;
+    font-family: 'Inconsolata', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  .container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+
+  .err-code {
+    font-family: 'Merriweather', serif;
+    font-size: 96px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.04em;
+  }
+
+  h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--ink2);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s, transform 0.15s;
+  }
+
+  .btn:hover {
+    background: #F0D060;
+    transform: translateY(-1px);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    padding: 1.5rem 2rem;
+    font-family: 'Inconsolata', monospace;
+    font-size: 11px;
+    color: var(--ink3);
+    text-align: center;
+  }
+</style>
+<script>
+  if (localStorage.getItem('wk-theme') === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">WordKit <span class="logo-badge">beta</span></a>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <div class="err-code">404</div>
+    <h1>Lost in translation?</h1>
+    <p>We couldn't find the page you were looking for. It might have been moved or doesn't exist.</p>
+    <a href="/" class="btn">Back to Home</a>
+  </div>
+</div>
+
+<footer>
+  <div>© 2026 WordKit. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
