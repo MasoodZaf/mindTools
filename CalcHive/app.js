@@ -151,7 +151,9 @@ function handleSearch(){
 
 /* ── TABS ── */
 function updateTabCounts(){['finance','health','student','fun','utility'].forEach(cat=>{const el=document.getElementById('ct-'+cat);if(el)el.textContent=CALCS.filter(c=>c.cat===cat).length;});const all=document.getElementById('ct-all');if(all)all.textContent=CALCS.length;}
-function switchTab(cat){showHome();renderGrid(cat);}
+/* Pages without the calculator grid (blog posts) send the menu to the homepage. */
+function onHomeLayout(){return !!document.getElementById('home-view');}
+function switchTab(cat){if(!onHomeLayout()){window.location.href='/?cat='+encodeURIComponent(cat);return;}showHome();renderGrid(cat);}
 function initTabs(){document.getElementById('tab-bar').addEventListener('click',e=>{const btn=e.target.closest('.cat-tab');if(!btn)return;showHome();renderGrid(btn.dataset.cat);});}
 
 /* ── COMPACT ── */
@@ -195,6 +197,7 @@ function answerDaily(di,chosen){LS.set('ch-daily-'+di,chosen);initDaily();}
    w.init() called for every widget that needs it
 ══════════════════════════════════════════════ */
 function openCalc(id){
+  if(!document.getElementById('calc-widget')){window.location.href='/'+id+'-calculator';return;}
   const calc=CALCS.find(c=>c.id===id);if(!calc)return;
   currentCalcId=id;bumpFreq(id);addHistory(id,calc.title);
   const w=WIDGETS[id];
@@ -1539,12 +1542,14 @@ function calcDebt(){
 ══════════════════════════════════════════════ */
 (function boot(){
   initTheme();
+  if(!onHomeLayout())return;
   initStreak();
   isCompact=LS.get('ch-compact',false);
   if(isCompact){const b=document.getElementById('compact-btn');if(b){b.textContent='⊞ Expanded';b.classList.add('on');}}
   updateTabCounts();
   initTabs();
-  renderGrid('all');
+  const askedCat=new URLSearchParams(window.location.search).get('cat');
+  renderGrid(CALCS.some(c=>c.cat===askedCat)?askedCat:'all');
   renderPers();
   initDaily();
   document.getElementById('hero-count').textContent=CALCS.length;
