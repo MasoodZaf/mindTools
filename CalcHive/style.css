@@ -141,3 +141,8 @@ footer{background:var(--ink);color:#fff;padding:3rem 2rem;margin-top:2rem}
 .footer-col a:hover{color:#fff}
 .footer-bottom{max-width:1100px;margin:1.5rem auto 0;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.3);display:flex;justify-content:space-between}
 @media(max-width:768px){.hero{grid-template-columns:1fr}.hero-visual{display:none}.cv-layout{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.daily-card{grid-template-columns:1fr}}
+/* Phones: the bar (logo + five buttons, 32px padding) was ~470px wide, so every page scrolled sideways. */
+@media(max-width:560px){nav{padding:0 1rem;gap:8px}.logo{font-size:19px;gap:6px}.nav-right{gap:2px;min-width:0}.nav-btn{padding:5px 7px}.theme-btn{padding:4px 7px}}
+/* The logo already goes home, so the Home button is the one to drop when space runs out. */
+@media(max-width:420px){.nav-right>.nav-btn:first-child{display:none}}
+@media(max-width:340px){nav{height:auto;min-height:56px;flex-wrap:wrap;padding:.5rem 1rem;row-gap:4px}.nav-right{flex-wrap:wrap}}
